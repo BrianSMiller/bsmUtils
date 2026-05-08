@@ -1,7 +1,12 @@
 function h = horzline(x,linespec,varargin)
 % h = horzline(x);
-% Plot a horizontal line at (y-intercept) position x;
-% Return line handle (h);
+% Plot a horizontal line at (y-intercept) position x.
+% Return line handle (h).
+%
+% DEPRECATED: yline() is a MATLAB built-in since R2018b and is a better
+% alternative. Consider replacing calls to horzline with yline.
+warning('horzline:deprecated', ...
+    'horzline is deprecated. Use yline() instead (available since R2018b).');
 h = [];
 if nargin < 2
     linespec = '-';
