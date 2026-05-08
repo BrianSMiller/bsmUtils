@@ -15,11 +15,12 @@ if (isempty(filePath))
 end
 fullFileName = [filePath filesep fileName '.png'];
 print(figureHandle, fullFileName,'-dpng','-r600','-noui');
-eval(['!magick "' fullFileName '" -trim "' fullFileName '"']);
+
+[status, ~] = system(['magick "' fullFileName '" -trim "' fullFileName '"']);
+% if status ~= 0
+%     warning('saveAsPng:imagemagickNotFound', ...
+%         'ImageMagick not found — saved without trimming whitespace.');
+% end
 
 
-% print(figureHandle, fullFileName,'-depsc','-loose','-noui');
-% eval(['!magick convert "' fullFileName '" -trim "' fullFileName '"']);
-
-end
 
